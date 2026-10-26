@@ -5,6 +5,8 @@
 A four-step subscription form: personal details, plan, add-ons, summary, confirmation.
 Built with Vite + TypeScript and hand-written CSS. No UI framework, no CSS framework.
 
+**[Live demo](https://multi-step-form-phi.vercel.app)**
+
 ## Run it
 
 Requires Node 20.19+ or 22.12+ (Vite 8).
