@@ -41,3 +41,5 @@ Thumbs.db
 
 # Local browser tooling output
 /.playwright-mcp
+
+.vercel
