@@ -1,0 +1,28 @@
+:root {
+  /* Palette — names mirror style-guide.md */
+  --blue-950: hsl(213 96% 18%);
+  --purple-600: hsl(243 100% 62%);
+  --purple-200: hsl(229 24% 87%);
+  --blue-300: hsl(228 100% 84%);
+  --blue-200: hsl(206 94% 87%);
+  --red-500: hsl(354 84% 57%);
+  --grey-500: hsl(231 11% 63%);
+  --blue-100: hsl(218 100% 97%);
+  --blue-50: hsl(231 100% 99%);
+  --white: hsl(0 100% 100%);
+
+  /* Shape */
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Type */
+  --font-sans: "Ubuntu", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Layout — the sidebar asset is 274x568, the shell is 940x600 at 1440px */
+  --sidebar-width: clamp(12rem, 24vw, 17.125rem);
+  --shell-min-height: 37.5rem;
+  --content-inline: clamp(1.5rem, 6.4vw, 6rem);
+  --page-bg: var(--blue-100);
+  --shadow-shell: 0 1.5rem 3rem hsl(213 96% 18% / 0.06);
+}

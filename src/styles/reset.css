@@ -1,0 +1,50 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:where(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, fieldset, legend) {
+  margin: 0;
+}
+
+:where(img, svg) {
+  display: block;
+  max-width: 100%;
+}
+
+:where(input, button, select, textarea) {
+  font: inherit;
+  color: inherit;
+}
+
+:where(button) {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+:where(fieldset) {
+  padding: 0;
+  border: 0;
+  min-width: 0; /* keeps grid/flex children from blowing out */
+}
+
+:where(legend) {
+  padding: 0;
+}
+
+:where(ul, ol) {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*
+ * `hidden` loses against any component that sets `display`.
+ * This is one of the few legitimate uses of !important.
+ */
+[hidden] {
+  display: none !important;
+}

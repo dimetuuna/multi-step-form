@@ -1,0 +1,643 @@
+/* ---------------------------------------------------------------- Stepper */
+
+.stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.stepper__item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stepper__num {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.0625rem;
+  height: 2.0625rem;
+  border: 1px solid var(--blue-300);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.stepper__item[aria-current="step"] .stepper__num {
+  border-color: var(--blue-200);
+  background: var(--blue-200);
+  color: var(--blue-950);
+}
+
+.stepper__label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.stepper__kicker {
+  color: var(--grey-500);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.stepper__label strong {
+  color: var(--white);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.stepper__item[aria-current="step"] .stepper__kicker {
+  color: var(--blue-200);
+}
+
+/* ------------------------------------------------------------------- Step */
+
+.step__title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.step__intro {
+  margin-top: 0.75rem;
+  color: var(--grey-500);
+}
+
+/* ----------------------------------------------------------------- Fields */
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.field__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.field__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.field__error {
+  color: var(--red-500);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* An empty message must not occupy space nor be announced */
+.field__error:empty {
+  display: none;
+}
+
+.input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--purple-200);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--blue-950);
+  caret-color: var(--purple-600);
+  transition: border-color 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--grey-500);
+  font-weight: 500;
+}
+
+.input:hover {
+  border-color: var(--purple-600);
+}
+
+/*
+ * The design shows a purple border on focus. The extra outline is deliberate:
+ * a 1px border alone disappears at 200% zoom and in forced-colors mode.
+ */
+.input:focus-visible {
+  border-color: var(--purple-600);
+  outline: 1px solid var(--purple-600);
+  outline-offset: 0;
+}
+
+.input[aria-invalid="true"] {
+  border-color: var(--red-500);
+}
+
+/* The focus ring has to agree with the border, or it reads as two states. */
+.input[aria-invalid="true"]:focus-visible {
+  outline-color: var(--red-500);
+}
+
+/* ---------------------------------------------------------------- Actions */
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.form-actions [data-submit] {
+  margin-inline-start: auto;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--blue-950);
+  color: var(--white);
+}
+
+.btn--primary:hover {
+  background: hsl(213 96% 26%);
+}
+
+.btn--confirm {
+  background: var(--purple-600);
+  color: var(--white);
+}
+
+.btn--confirm:hover {
+  background: hsl(243 100% 72%);
+}
+
+.btn--ghost {
+  color: var(--grey-500);
+}
+
+.btn--ghost:hover {
+  color: var(--blue-950);
+}
+
+.link-btn {
+  align-self: flex-start;
+  color: var(--purple-600);
+  font-size: 0.875rem;
+  text-decoration: underline;
+}
+
+.link-btn:hover {
+  color: hsl(243 100% 50%);
+}
+
+/* ------------------------------------------------------------------ Plans */
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.25rem 1rem;
+  border: 1px solid var(--purple-200);
+  border-radius: var(--radius);
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+/* Hover is border only. Selected is border + fill. They are different states. */
+.plan-card:hover {
+  border-color: var(--purple-600);
+}
+
+.plan-card:has(input:checked) {
+  border-color: var(--purple-600);
+  background: var(--blue-50);
+}
+
+.plan-card:has(input:focus-visible) {
+  outline: 2px solid var(--purple-600);
+  outline-offset: 2px;
+}
+
+.plan-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.plan-card__name {
+  font-weight: 700;
+}
+
+.plan-card__price {
+  color: var(--grey-500);
+  font-size: 0.875rem;
+}
+
+.plan-card__note {
+  font-size: 0.75rem;
+}
+
+.plans__error {
+  margin-top: 0.75rem;
+}
+
+/* ----------------------------------------------------------------- Billing */
+
+.billing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 0.875rem;
+  background: var(--blue-50);
+  border-radius: var(--radius);
+}
+
+.billing__label {
+  color: var(--grey-500);
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.billing:has(.switch__input:checked) [data-period-label="yearly"],
+.billing:not(:has(.switch__input:checked)) [data-period-label="monthly"] {
+  color: var(--blue-950);
+  font-weight: 700;
+}
+
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/*
+ * The thumb is a real element, not ::before on the input:
+ * Firefox does not render pseudo-elements on <input>.
+ */
+.switch__input {
+  width: 2.5rem;
+  height: 1.25rem;
+  margin: 0;
+  border-radius: 999px;
+  background: var(--blue-950);
+  appearance: none;
+  cursor: pointer;
+}
+
+.switch__thumb {
+  position: absolute;
+  left: 0.1875rem;
+  width: 0.9375rem;
+  height: 0.9375rem;
+  border-radius: 50%;
+  background: var(--white);
+  pointer-events: none;
+  transition: translate 0.15s ease;
+}
+
+.switch__input:checked + .switch__thumb {
+  translate: 1.1875rem 0;
+}
+
+/* ----------------------------------------------------------------- Add-ons */
+
+.addons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.addon {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--purple-200);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.addon:hover {
+  border-color: var(--purple-600);
+}
+
+.addon:has(input:checked) {
+  border-color: var(--purple-600);
+  background: var(--blue-50);
+}
+
+/* Same rule as the plan cards: the outline is the card, not the 20px box inside. */
+.addon:has(input:focus-visible) {
+  outline: 2px solid var(--purple-600);
+  outline-offset: 2px;
+}
+
+.addon__input:focus-visible {
+  outline: none;
+}
+
+.addon__input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0;
+  border: 1px solid var(--purple-200);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  appearance: none;
+  cursor: pointer;
+}
+
+.addon__input:checked {
+  border-color: var(--purple-600);
+  background: var(--purple-600) url("../../assets/images/icon-checkmark.svg") center / 0.75rem no-repeat;
+}
+
+.addon__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.addon__name {
+  font-weight: 700;
+}
+
+.addon__desc {
+  color: var(--grey-500);
+  font-size: 0.875rem;
+}
+
+.addon__price {
+  color: var(--purple-600);
+  font-size: 0.875rem;
+}
+
+/* ----------------------------------------------------------------- Summary */
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.summary__block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--blue-50);
+  border-radius: var(--radius);
+}
+
+.summary__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.summary__title {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.summary__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.summary__divider {
+  margin: 0.125rem 0;
+  border: 0;
+  border-top: 1px solid var(--purple-200);
+}
+
+.summary__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.summary__row dt {
+  color: var(--grey-500);
+  font-size: 0.875rem;
+}
+
+.summary__row dd {
+  font-size: 0.875rem;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.summary__row--plan {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--purple-200);
+}
+
+.summary__row--plan dt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
+}
+
+.summary__row--plan dt > span {
+  color: var(--blue-950);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.summary__row--plan dd {
+  color: var(--blue-950);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* With no add-ons there is nothing below the plan, so the divider separates nothing. */
+.summary__block:not(:has([data-addon-row]:not([hidden]))) .summary__row--plan {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.summary__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 1.25rem;
+  color: var(--grey-500);
+}
+
+.summary__total-value {
+  color: var(--purple-600);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------ Confirmation */
+
+.step--confirm {
+  justify-content: center;
+}
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 22rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.confirmation img {
+  width: 5rem;
+  height: auto;
+}
+
+.confirmation__title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.confirmation p {
+  color: var(--grey-500);
+}
+
+/* ------------------------------------------------------------- Attribution */
+
+.attribution {
+  padding: 1rem;
+  color: var(--grey-500);
+  font-size: 0.6875rem;
+  text-align: center;
+}
+
+.attribution a {
+  color: var(--blue-950);
+}
+
+/* ------------------------------------------------------------------ Mobile */
+
+@media (max-width: 47.99rem) {
+  .step__title {
+    font-size: 1.75rem;
+  }
+
+  /* The banner keeps the numbers only; the labels stay available to screen readers. */
+  .stepper {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.875rem;
+  }
+
+  .stepper__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+
+  .plans {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .plan-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .addons {
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .addon {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .summary {
+    margin-top: 1.5rem;
+  }
+
+  .summary__block {
+    padding: 1rem;
+  }
+
+  .summary__total {
+    padding: 0 1rem;
+  }
+
+  .form-actions {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 10;
+    margin: 0;
+    padding: 0.875rem 1.5rem calc(0.875rem + env(safe-area-inset-bottom));
+    background: var(--white);
+    box-shadow: 0 -0.5rem 1.5rem hsl(213 96% 18% / 0.06);
+  }
+
+  .confirmation {
+    padding-block: 2rem;
+  }
+
+  .confirmation img {
+    width: 3.5rem;
+  }
+
+  .confirmation__title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .input,
+  .plan-card,
+  .addon,
+  .billing__label,
+  .switch__thumb,
+  .link-btn {
+    transition: none;
+  }
+}

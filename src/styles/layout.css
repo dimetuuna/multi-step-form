@@ -1,0 +1,81 @@
+.page {
+  display: grid;
+  flex: 1;
+  place-items: center;
+  align-items: safe center; /* never clip the top of a tall card */
+  padding: 2rem 1rem;
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  width: min(58.75rem, 100%);
+  min-height: var(--shell-min-height);
+  padding: 1rem;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-shell);
+}
+
+.sidebar {
+  padding: 2.5rem clamp(1rem, 2.2vw, 2rem);
+  border-radius: 0.625rem;
+  background: var(--purple-600) url("../../assets/images/bg-sidebar-desktop.svg") center / cover no-repeat;
+  color: var(--white);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem var(--content-inline) 0.75rem;
+}
+
+.step {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+@media (max-width: 47.99rem) {
+  .page {
+    padding: 0;
+    place-items: stretch;
+    align-items: stretch;
+  }
+
+  .shell {
+    display: block;
+    width: 100%;
+    min-height: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .sidebar {
+    /* A 375-wide banner is 172 tall; below that it shrinks, above it stops growing. */
+    height: clamp(9.25rem, 45.9vw, 10.75rem);
+    padding: 2rem 1rem 0;
+    border-radius: 0;
+    background-image: url("../../assets/images/bg-sidebar-mobile.svg");
+  }
+
+  .content {
+    margin: -4.25rem 1.5rem 1.5rem;
+    padding: 2rem 1.5rem 1.5rem;
+    background: var(--white);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-shell);
+  }
+
+  /* Room for the fixed action bar, which overlays the end of the document */
+  body {
+    padding-bottom: 6rem;
+  }
+
+  /* The confirmation step has no action bar, so it needs no clearance. */
+  body:has(.step--confirm:not([hidden])) {
+    padding-bottom: 1.5rem;
+  }
+}
